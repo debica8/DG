@@ -12,15 +12,15 @@
                 <ul>
                   <li><a href="index.php">Početna stranica</a></li>
                   <li><a href="vijesti.php">Vijesti</a></li>
-                  <li><a href="#">Kontakt</a></li>
-                  <li><a href="#">O nama</a></li>
-                  <li><a href="#">Galerija</a></li>
+                  <li><a href="kontakt.php">Kontakt</a></li>
+                  <li><a href="o_nama.php">O nama</a></li>
+                  <li><a href="galerija.php">Galerija</a></li>
                 </ul>
             </nav>
         </header>
         <div class="sadrzaj">
             <h1>Tattoo studio Tetobitna</h1>
-             <figure>
+            <figure>
                 <img src="slike/karta.png" style="width: 50%;" >
                 <figcaption>Naše lokacije diljem RH</figcaption>
             </figure>
@@ -42,7 +42,7 @@
                 Tradition, portreti, realizam, orijentalne, Cartoon itd. Naše umjetnice će se prilagoditi vama, često na licu mjesta.
                 Slijedeći vašu želju u realnim okvirima. Gotovo svaki dizajn koji možete zamisliti, može se pretvoriti u lijepu tetovažu.
                 Dođite sa svojim idejama, predlošcima, fotografijama itd… kako biste zajedno sa nama stvorili vlastitu, jedinstvenu
-                umjetnost oslikavanja tijela. Vidimo se u jednom od Tetobitna!
+                umjetnost oslikavanja tijela. Vidimo se u jednom od Tetobitna studija!
             </p>
         </div>
     </body>
