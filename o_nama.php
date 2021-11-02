@@ -6,18 +6,7 @@
         <link rel="stylesheet" href="stil.css">
     </head>
     <body>
-        <header>
-            <img src="slike/banner.jpg" />
-            <nav>
-                <ul>
-                  <li><a href="index.php">Početna stranica</a></li>
-                  <li><a href="vijesti.php">Vijesti</a></li>
-                  <li><a href="kontakt.php">Kontakt</a></li>
-                  <li><a href="o_nama.php">O nama</a></li>
-                  <li><a href="galerija.php">Galerija</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php include_once 'navigacija.php'; ?>
         <div style="padding: 10px;">
             <div>
                 <video width="320" height="240" controls>

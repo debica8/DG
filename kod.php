@@ -1,0 +1,1 @@
+<?php $conn = mysqli_connect('localhost', 'root', '', 'ntpws') or die('<p style="color: #66ffff">Neka greška pri spajanju</p>'); ?>
