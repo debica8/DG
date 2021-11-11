@@ -6,18 +6,7 @@
         <link rel="stylesheet" href="stil.css">
     </head>
     <body>
-        <header>
-            <img src="slike/banner.jpg" />
-            <nav>
-                <ul>
-                  <li><a href="index.php">Početna stranica</a></li>
-                  <li><a href="vijesti.php">Vijesti</a></li>
-                  <li><a href="kontakt.php">Kontakt</a></li>
-                  <li><a href="o_nama.php">O nama</a></li>
-                  <li><a href="galerija.php">Galerija</a></li>
-                </ul>
-            </nav>
-        </header>
+        <?php include_once 'navigacija.php'; ?>
         <div>
             <h1>Galerija slika</h1>
             <div>
@@ -86,6 +75,6 @@
         <br>
     </body>
     <footer>
-        Copyright © 2021. Deborah Gomerčić <a href="https://github.com/debica8/prvaZadaca"><img src="slike/github.png" style="width: 20px;"/></a>
+        Copyright © 2021. Deborah Gomerčić <a href="https://github.com/debica8/DG"><img src="slike/github.png" style="width: 20px;"/></a>
     </footer>
 </html>

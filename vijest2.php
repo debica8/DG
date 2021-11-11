@@ -60,6 +60,6 @@
         </div>
     </body>
     <footer>
-        Copyright © 2021. Deborah Gomerčić <a href="https://github.com/debica8/prvaZadaca"><img src="slike/github.png" style="width: 20px;"/></a>
+        Copyright © 2021. Deborah Gomerčić <a href="https://github.com/debica8/DG"><img src="slike/github.png" style="width: 20px;"/></a>
     </footer>
 </html>

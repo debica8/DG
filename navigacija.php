@@ -14,11 +14,14 @@ and open the template in the editor.
             <img src="slike/banner.jpg" />
             <nav>
                 <ul>
-                  <li><a href="index.php?x=1">Početna stranica</a></li>
-                  <li><a href="vijesti.php?x=2">Vijesti</a></li>
-                  <li><a href="kontakt.php?x=3">Kontakt</a></li>
-                  <li><a href="o_nama.php?x=4">O nama</a></li>
-                  <li><a href="galerija.php?x=5">Galerija</a></li>
+                  <li><a href="navigacija.php?x=1">Početna stranica</a></li>
+                  <li><a href="navigacija.php?x=2">Vijesti</a></li>
+                  <li><a href="navigacija.php?x=3">Kontakt</a></li>
+                  <li><a href="navigacija.php?x=4">O nama</a></li>
+                  <li><a href="navigacija.php?x=5">Galerija</a></li>
+                  <li><a href="navigacija.php?x=6">Registracija</a></li>
+                  <li><a href="navigacija.php?x=7">Prijava</a></li>
+                  <li><a href="navigacija.php?x=8">Administracija</a></li>
                 </ul>
             </nav>
         </header>
@@ -37,6 +40,15 @@ and open the template in the editor.
         }
         else if($_GET['x'] == 5){
             include_once 'galerija.php';
+        }
+        else if($_GET['x'] == 6){
+            include_once 'registracija.php';
+        }
+        else if($_GET['x'] == 7){
+            include_once 'prijava.php';
+        }
+        else if($_GET['x'] == 8){
+            include_once 'administracija.php';
         }
         ?>
     </body>
