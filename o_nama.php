@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php include_once 'navigacija.php'; ?>
-        <div style="padding: 10px;">
+        <div class="sadrzaj">
             <div>
                 <video width="320" height="240" controls>
                     <source src="slike/Laura_i_ja.mp4" type="video/mp4">

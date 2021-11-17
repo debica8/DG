@@ -7,9 +7,9 @@
     </head>
     <body>
         <?php include_once 'navigacija.php'; ?>
-        <div class="forma">
+        <div class="sadrzaj">
             <h2>Naša lokacija</h2>
-            <div class="mapouter"><div class="gmap_canvas"><iframe width="775" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=kri%C5%A1ka%2030&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-org.net">it 123movies</a><br><style>.mapouter{position:relative;text-align:right;height:500px;width:775px;}</style><a href="https://www.embedgooglemap.net">embedgooglemap.net</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:775px;}</style></div></div>
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="775" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=kri%C5%A1ka%2030&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>.mapouter{position:relative;text-align:right;height:500px;width:775px;}</style><a href="https://www.embedgooglemap.net">embedgooglemap.net</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:775px;}</style></div></div><br><br>
             <div>
                 <form action="#" method="POST">
                     Ime:*<br>

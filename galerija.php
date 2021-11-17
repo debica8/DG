@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php include_once 'navigacija.php'; ?>
-        <div>
+        <div class="sadrzaj">
             <h1>Galerija slika</h1>
             <div>
                 <div class="galerija">

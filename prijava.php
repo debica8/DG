@@ -29,7 +29,7 @@
             }
             else{
             ?>
-            <div style="padding: 5%; padding-left: 35%">
+            <div class="forma">
             <form method="POST" action="#">
                 E-mail adresa:<br>
                 <input type="email" name="email"><br>
@@ -40,6 +40,7 @@
             <?php
             }
             ?>
+            </div>
         </div>
     </body>
     <footer>

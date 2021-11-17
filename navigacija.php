@@ -22,6 +22,8 @@ and open the template in the editor.
                   <li><a href="navigacija.php?x=6">Registracija</a></li>
                   <li><a href="navigacija.php?x=7">Prijava</a></li>
                   <li><a href="navigacija.php?x=8">Administracija</a></li>
+                  <li><a href="navigacija.php?x=9">Uređivanje</a></li>
+                  <li><a href="navigacija.php?x=10">Napiši članak</a></li>
                 </ul>
             </nav>
         </header>
@@ -49,6 +51,12 @@ and open the template in the editor.
         }
         else if($_GET['x'] == 8){
             include_once 'administracija.php';
+        }
+        else if($_GET['x'] == 9){
+            include_once 'uredivanje.php';
+        }
+        else if($_GET['x'] == 10){
+            include_once 'korisnicko.php';
         }
         ?>
     </body>
