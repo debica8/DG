@@ -3,21 +3,21 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Prva zadaća</title>
+        <title>Tetobitna</title>
         <link rel="stylesheet" href="stil.css">
     </head>
     <body>
         <?php include_once 'navigacija.php'; ?>
         <div class="forma">
             <form method="POST" action="navigacija.php?x=7">
-                Ime:<br>
-                <input type="text" name="ime"><br>
-                Prezime:<br>
-                <input type="text" name="prezime"><br>
-                E-mail adresa:<br>
-                <input type="email" name="email"><br>
-                Država:<br>
-                <select name="drzava" id="drzava">
+                Ime:*<br>
+                <input type="text" name="ime" required><br>
+                Prezime:*<br>
+                <input type="text" name="prezime" required><br>
+                E-mail adresa:*<br>
+                <input type="email" name="email" required><br>
+                Država:*<br>
+                <select name="drzava" id="drzava" required>
                 <?php
                 $sql = "SELECT ime2 FROM drzave";
                 $r = $c->query($sql);
@@ -32,10 +32,10 @@
                 <input type="text" name="grad"><br>
                 Ulica:<br>
                 <input type="text" name="ulica"><br>
-                Datum rođenja:<br>
-                <input type="date" name="datum"><br>
-                Lozinka:<br>
-                <input type="password" name="lozinka"><br>
+                Datum rođenja:*<br>
+                <input type="date" name="datum" required><br>
+                Lozinka:*<br>
+                <input type="password" name="lozinka" required><br>
                 <input type="submit" name="submit" value="Registracija">
             </form>
         </div>

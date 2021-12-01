@@ -3,12 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Prva zadaća</title>
+        <title>Tetobitna</title>
         <link rel="stylesheet" href="stil.css">
     </head>
     <body>
         <?php
         include_once 'navigacija.php';
+        if(!$_SESSION['uloga'] == 'Editor'){
+            header("Location: index.php");
+        }
         if(isset($_GET['id']) && !isset($_GET['z'])){
             if(isset($_GET['sid'])){
                 $sql = "DELETE FROM slike WHERE id=".$_GET['sid'];

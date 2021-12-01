@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Prva zadaća</title>
+        <title>Tetobitna</title>
         <link rel="stylesheet" href="stil.css">
     </head>
     <body>
@@ -11,35 +11,47 @@
         <div>
             <?php
             if(isset($_POST['ime'])){
-                $br = 1;
-                $korisnicko = substr($_POST['ime'], 0, 1).substr($_POST['prezime'], 0, 1).$br;
-                $sql = "SELECT korisnicko FROM korisnik WHERE korisnicko='".$korisnicko."'";
+                $sql = "SELECT email FROM korisnik WHERE email='".$_POST['email']."'";
                 $r = $c->query($sql);
-                $k = $r->fetch_assoc();
-                while ($r->num_rows > 0){
-                    $korisnicko = strtoupper(substr($_POST['ime'], 0, 1)).strtoupper(substr($_POST['prezime'], 0, 1)).$br;
+                if($r->num_rows > 0){
+                    echo '<h2 style="color: red; padding-left: 39%;">Već postoji korisnik s ovom email adresom!</h2>';
+                }
+                else{
+                    $br = 1;
+                    $korisnicko = substr($_POST['ime'], 0, 1).substr($_POST['prezime'], 0, 1).$br;
                     $sql = "SELECT korisnicko FROM korisnik WHERE korisnicko='".$korisnicko."'";
                     $r = $c->query($sql);
-                    $k = $r->fetch_assoc();
-                    $br++;
+                    while ($r->num_rows > 0){
+                        $korisnicko = strtoupper(substr($_POST['ime'], 0, 1)).strtoupper(substr($_POST['prezime'], 0, 1)).$br;
+                        $sql = "SELECT korisnicko FROM korisnik WHERE korisnicko='".$korisnicko."'";
+                        $r = $c->query($sql);
+                        $br++;
+                    }
+                    $loz = password_hash($_POST['lozinka'], PASSWORD_DEFAULT);
+                    $sql = "INSERT INTO korisnik VALUES ('".$_POST['ime']."', '".$_POST['prezime']."', '".$korisnicko."', '".$_POST['email']."', '".$_POST['drzava']."', '".$_POST['grad']."', '".$_POST['ulica']."', '".$_POST['datum']."', '".$loz."', 'User', 0)";
+                    $c->query($sql);
                 }
-                $loz = password_hash($_POST['lozinka'], PASSWORD_DEFAULT);
-                $sql = "INSERT INTO korisnik VALUES ('".$_POST['ime']."', '".$_POST['prezime']."', '".$korisnicko."', '".$_POST['email']."', '".$_POST['drzava']."', '".$_POST['grad']."', '".$_POST['ulica']."', '".$_POST['datum']."', '".$loz."')";
-                $c->query($sql);
             }
-            else{
+            if(isset($_GET['p'])){
+                if($_GET['p'] == 'o'){
+                    echo '<h2 style="color: red; padding-left: 37%;">Korisnik još nije odobren od strane administratora!</h2>';
+                }
+                else if($_GET['p'] == 'l'){
+                    echo '<h2 style="color: red; padding-left: 43%;">Unesena je netočna lozinka!</h2>';
+                }
+                else if($_GET['p'] == 'e'){
+                    echo '<h2 style="color: red; padding-left: 36%;">Nema korisničkog računa s unesenom email adresom!</h2>';
+                }
+            }
             ?>
             <div class="forma">
-            <form method="POST" action="#">
+            <form method="POST" action="navigacija.php?x=11">
                 E-mail adresa:<br>
                 <input type="email" name="email"><br>
                 Lozinka:<br>
                 <input type="password" name="lozinka"><br>
                 <input type="submit" name="submit" value="Prijava">
             </form>
-            <?php
-            }
-            ?>
             </div>
         </div>
     </body>

@@ -3,12 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Prva zadaća</title>
+        <title>Tetobitna</title>
         <link rel="stylesheet" href="stil.css">
     </head>
     <body>
         <?php
         include_once 'navigacija.php';
+        if(!$_SESSION['uloga'] == 'User'){
+            header("Location: index.php");
+        }
         if(isset($_POST['naslov'])){
             $tekst = addslashes($_POST['tekst']);
             $sql = "INSERT INTO vijesti (naslov, tekst, datum) VALUES ('".$_POST['naslov']."', '".$_POST['tekst']."', '".date("Y-m-d")."')";
@@ -37,7 +40,7 @@
                     <input type="text" name="naslov"><br>
                     Tekst:<br>
                     <textarea id="tekst" name="tekst" rows="10" cols="100">Tu piši...</textarea><br><br>
-                    Učitaj sliku za članak <input name="slika" type="file" /><br>
+                    Učitaj sliku za vijest <input name="slika" type="file" /><br>
                     <input type="submit" name="submit" value="Pošalji vijest na odobrenje">
                 </form>
             </div>

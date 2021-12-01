@@ -1,9 +1,5 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -11,6 +7,10 @@ and open the template in the editor.
     </head>
     <body>
         <header>
+            <?php
+            $json = file_get_contents('https://www.metaweather.com/api/location/851128/');
+            $_data = json_decode($json, true);
+            ?>
             <img src="slike/banner.jpg" />
             <nav>
                 <ul>
@@ -19,13 +19,15 @@ and open the template in the editor.
                   <li><a href="navigacija.php?x=3">Kontakt</a></li>
                   <li><a href="navigacija.php?x=4">O nama</a></li>
                   <li><a href="navigacija.php?x=5">Galerija</a></li>
-                  <li><a href="navigacija.php?x=6">Registracija</a></li>
-                  <li><a href="navigacija.php?x=7">Prijava</a></li>
-                  <li><a href="navigacija.php?x=8">Administracija</a></li>
-                  <li><a href="navigacija.php?x=9">Uređivanje</a></li>
-                  <li><a href="navigacija.php?x=10">Napiši članak</a></li>
+                  <?php if(!isset($_SESSION['uloga'])){ echo '<li><a href="navigacija.php?x=6">Registracija</a></li>'; } ?>
+                  <?php if(!isset($_SESSION['uloga'])){ echo '<li><a href="navigacija.php?x=7">Prijava</a></li>'; } ?>
+                  <?php if(isset($_SESSION['uloga']) && $_SESSION['uloga'] == 'Administrator'){ echo '<li><a href="navigacija.php?x=8">Administracija</a></li>'; } ?>
+                  <?php if(isset($_SESSION['uloga']) && $_SESSION['uloga'] == 'Editor'){ echo '<li><a href="navigacija.php?x=9">Uređivanje</a></li>'; } ?>
+                  <?php if(isset($_SESSION['uloga']) && $_SESSION['uloga'] == 'User'){ echo '<li><a href="navigacija.php?x=10">Napiši vijest</a></li>'; } ?>
+                  <li><a href="https://www.metoffice.gov.uk/weather/forecast/u25kdgqqt#?date=2021-12-01">Temperatura u Zagrebu: <?php echo $_data['consolidated_weather'][0]['the_temp'];  ?>°</a>
                 </ul>
             </nav>
+            <?php if(isset($_SESSION['korisnicko'])){ echo '<div class="odjava"><button class="gumb"><a href="odjava.php">Odjava</a></button></div>'; } ?>
         </header>
         <?php
         if(!isset($_GET['x']) || $_GET['x'] == 1){
@@ -57,6 +59,9 @@ and open the template in the editor.
         }
         else if($_GET['x'] == 10){
             include_once 'korisnicko.php';
+        }
+        else if($_GET['x'] == 11){
+            include_once 'prijavaKontroler.php';
         }
         ?>
     </body>

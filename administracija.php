@@ -3,13 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Prva zadaća</title>
+        <title>Tetobitna</title>
         <link rel="stylesheet" href="stil.css">
     </head>
     <body>
         <?php
         include_once 'navigacija.php';
-        if(isset($_GET['email'])){
+        if(!$_SESSION['uloga'] == 'Admin'){
+            header("Location: index.php");
+        }
+        if(isset($_GET['email']) && !isset($_GET['ok'])){
             $sql = "SELECT * from korisnik WHERE email='".$_GET['email']."'";
             $kor = $c->query($sql);
             $korisnik = $kor->fetch_assoc();
@@ -111,7 +114,7 @@
                     Tekst:<br>
                     <textarea id="tekst" name="tekst" rows="10" cols="100">Tu piši...</textarea><br><br>
                     Učitaj sliku za članak <input name="slika" type="file" /><br>
-                    <input type="submit" name="submit" value="Pošalji vijest na odobrenje">
+                    <input type="submit" name="submit" value="Objavi vijest">
                 </form>
                 </div>
                 <?php
@@ -132,7 +135,7 @@
             
             if(isset($_POST['naslov'])){
                 $tekst = addslashes($_POST['tekst']);
-                $sql = "INSERT INTO vijesti (naslov, tekst, datum) VALUES ('".$_POST['naslov']."', '".$_POST['tekst']."', '".date("Y-m-d")."')";
+                $sql = "INSERT INTO vijesti (naslov, tekst, datum, odobren) VALUES ('".$_POST['naslov']."', '".$_POST['tekst']."', '".date("Y-m-d")."', 1)";
                 $c->query($sql);
                 
                 $sql = "SELECT id FROM vijesti WHERE id=(SELECT max(id) FROM vijesti)";
@@ -169,12 +172,28 @@
                 $c->query($sql);
             }
             
+            if(isset($_GET['ok'])){
+                $sql = "UPDATE korisnik SET odobren=1 WHERE email='".$_GET['email']."'";
+                $c->query($sql);
+            }
+            
             echo '<div class="administracija"><h3>Korisnici</h3>';
+            echo '<h4>Odobreni korisnici</h4>';
             $sql = "SELECT * FROM korisnik";
             $r = $c->query($sql);
             while ($row = $r->fetch_assoc()){
-                echo $row['ime']." ".$row['prezime']." | ".$row['email']." - - <a href='administracija.php?x=8&email=".$row['email']."'>Uredi</a><br>";
+                if($row['odobren'] == 1){
+                    echo $row['ime']." ".$row['prezime']." | ".$row['email']." - - <a href='administracija.php?x=8&email=".$row['email']."'>Uredi</a><br>";
+                }
             }
+            echo '<h4>Neodobreni korisnici</h4>';
+            $r = $c->query($sql);
+            while ($row = $r->fetch_assoc()){
+                if($row['odobren'] == 0){
+                    echo $row['ime']." ".$row['prezime']." | ".$row['email']." - - <a href='administracija.php?x=8&email=".$row['email']."'>Uredi</a> - - <a href='administracija.php?x=8&ok=o&email=".$row['email']."'>Odobri</a><br>";
+                }
+            }
+            
             echo '</div><div class="administracija"><h3>Vijesti</h3>';
             echo '<h4>Odobrene vijesti</h4>';
             $sql = "SELECT * from vijesti";
