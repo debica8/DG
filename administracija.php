@@ -135,7 +135,7 @@
             
             if(isset($_POST['naslov'])){
                 $tekst = addslashes($_POST['tekst']);
-                $sql = "INSERT INTO vijesti (naslov, tekst, datum, odobren) VALUES ('".$_POST['naslov']."', '".$_POST['tekst']."', '".date("Y-m-d")."', 1)";
+                $sql = "INSERT INTO vijesti (naslov, tekst, datum, odobren) VALUES ('".$_POST['naslov']."', '".$tekst."', '".date("Y-m-d")."', 1)";
                 $c->query($sql);
                 
                 $sql = "SELECT id FROM vijesti WHERE id=(SELECT max(id) FROM vijesti)";
@@ -152,10 +152,9 @@
                     }
                 }
             }
-            
             if(isset($_POST['id'])){
                 $ntekst = addslashes($_POST['ntekst']);
-                $sql = "UPDATE vijesti SET naslov='".$_POST['nnaslov']."', tekst='".$_POST['ntekst']."', datum='".$_POST['ndatum']."' WHERE id=".$_POST['id'];
+                $sql = "UPDATE vijesti SET naslov='".$_POST['nnaslov']."', tekst='".$ntekst."', datum='".$_POST['ndatum']."' WHERE id=".$_POST['id'];
                 $c->query($sql);
                 if (count($_FILES) > 0){
                     if (is_uploaded_file($_FILES['nslika']['tmp_name'])) {

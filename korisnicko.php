@@ -14,7 +14,7 @@
         }
         if(isset($_POST['naslov'])){
             $tekst = addslashes($_POST['tekst']);
-            $sql = "INSERT INTO vijesti (naslov, tekst, datum) VALUES ('".$_POST['naslov']."', '".$_POST['tekst']."', '".date("Y-m-d")."')";
+            $sql = "INSERT INTO vijesti (naslov, tekst, datum) VALUES ('".$_POST['naslov']."', '".$tekst."', '".date("Y-m-d")."')";
             $c->query($sql);
             
             $sql = "SELECT id FROM vijesti WHERE id=(SELECT max(id) FROM vijesti)";
@@ -28,6 +28,7 @@
                     
                     $sql = "INSERT INTO slike(slika, vijest) VALUES('".$slikaPodaci."', ".$id.")";
                     $c->query($sql);
+                    echo $c->error;
                 }
             }
             echo '<h3>Vijest će se pojaviti na stranici kada/ako ju odobri aministrator.</h3>';
